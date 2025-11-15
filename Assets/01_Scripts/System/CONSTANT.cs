@@ -20,4 +20,11 @@ namespace CONSTANT
     }
 
 
+    public static class StateName
+    {
+        public static string State = "State";
+        public static string Action = "Action";
+    }
+
+
 }
