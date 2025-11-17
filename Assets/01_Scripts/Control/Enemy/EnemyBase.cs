@@ -6,22 +6,15 @@ public abstract class EnemyBase : MonoBehaviour
 {
     [Header("Base Enemy Stats")] 
     private EnemyType enemyType;
-    protected float maxHP;
-    protected float currentHP;
+
+    protected HealthControl hpControl;
     protected bool isDead = false;
 
-    public float MaxHP
+    public HealthControl HPControl
     {
-        get { return maxHP; }
-        set { maxHP = value; }
+        get { return hpControl; }
+        set { hpControl = value; }
     }
-
-    public float CurrentHP
-    {
-        get { return currentHP; }
-        set { currentHP = value; }
-    }
-
     public bool IsDead
     {
         get { return isDead; }
@@ -30,13 +23,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Awake()
     {
-        currentHP = maxHP;
+        hpControl = GetComponent<HealthControl>();
     }
-
-    protected virtual void Start()
-    {
-    }
-
     protected virtual void Update()
     {
         if (!isDead)
@@ -51,18 +39,6 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected abstract void OnHit();
     
-    public virtual void TakeDamage(float dmg)
-    {
-        if (isDead) return;
-
-        currentHP -= dmg;
-        OnHit();
-
-        if (currentHP <= 0)
-        {
-            Die();
-        }
-    }
 
     public virtual void Die()
     {

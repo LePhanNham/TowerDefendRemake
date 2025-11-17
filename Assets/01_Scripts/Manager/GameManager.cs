@@ -7,7 +7,7 @@ public class GameManager : SingletonMono<GameManager>
     private static GameState gameState;
     public static GameState GameState => gameState;
 
-    public void Awake()
+    protected override void Awake()
     {
         // Input.multiTouchEnabled = false;
         Application.targetFrameRate = 60;
@@ -21,9 +21,9 @@ public class GameManager : SingletonMono<GameManager>
         }
     }
 
-    public static void ChangeState(GameState gameState)
+    public static void ChangeState(GameState state)
     {
-        gameState = gameState;
+        gameState = state;
     }
     
     public static bool IsState(GameState state) => gameState == state;

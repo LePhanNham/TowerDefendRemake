@@ -25,7 +25,18 @@ namespace _01_Scripts.Data.Level
     {
         [SerializeField] private List<GroupEnemy> groupEnemies;
         [SerializeField] private int timeBetweenWaves;
-        public int TimeBetweenWaves { get => timeBetweenWaves; set => timeBetweenWaves = value; }
+        public List<GroupEnemy>  GroupEnemies { get => groupEnemies; }
+        public int TimeBetweenWaves { get => timeBetweenWaves; }
+
+        public int GetTotalEnemies()
+        {
+            int count = 0;
+            foreach (var groupEnemy in groupEnemies)
+            {
+                count += groupEnemy.Total;
+            }
+            return count;
+        }
     }
 
     public class GroupEnemy
@@ -33,9 +44,18 @@ namespace _01_Scripts.Data.Level
         [SerializeField] private int total;
         [SerializeField] private EnemyConfig enemyConfig;
         [SerializeField] private int timeDelays;
-        
-        public int Total { get => total; set => total = value; }
-        public int TimeDelay { get => timeDelays; set => timeDelays = value; }
+
+        public EnemyConfig EnemyConfig
+        {
+            get => enemyConfig;
+            set => enemyConfig = value;
+        }
+
+        public int Total { get => total;  }
+        public int TimeDelay
+        {
+            get => timeDelays;
+        }
 
 
     }
