@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6c82b9cf56404e89f04fb0f3d06517, type: 3}
+  m_Name: LevelTest
+  m_EditorClassIdentifier: 
+  levelID: 0
+  enemyWave:
+  - groupEnemies:
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    timeBetweenWaves: 1

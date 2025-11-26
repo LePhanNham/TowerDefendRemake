@@ -735,7 +735,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      towerDefense_tilesheet_0: 5206372450948694970
+      towerDefense_tilesheet_1: -2406917500014506641
+      towerDefense_tilesheet_10: -4284753123046619408
+      towerDefense_tilesheet_11: -5501802188436830545
+      towerDefense_tilesheet_12: 8175807171163793604
+      towerDefense_tilesheet_13: 290392695122482429
+      towerDefense_tilesheet_14: 9048741401490018957
+      towerDefense_tilesheet_15: -3906532346729386632
+      towerDefense_tilesheet_16: 3529290934443982179
+      towerDefense_tilesheet_17: -6463114863311366553
+      towerDefense_tilesheet_18: -2258348534480897386
+      towerDefense_tilesheet_19: -887646820570621766
+      towerDefense_tilesheet_2: -8959992466850621487
+      towerDefense_tilesheet_20: 3481343668717658772
+      towerDefense_tilesheet_21: 9131360643927409378
+      towerDefense_tilesheet_22: -5317508526729362110
+      towerDefense_tilesheet_23: -8932336715710318386
+      towerDefense_tilesheet_3: -1111867770082679107
+      towerDefense_tilesheet_4: -4071749163977892728
+      towerDefense_tilesheet_5: -3420521423322380219
+      towerDefense_tilesheet_6: 2771627356714456203
+      towerDefense_tilesheet_7: 2320333555377015039
+      towerDefense_tilesheet_8: -494851097427480261
+      towerDefense_tilesheet_9: -7674128851264370317
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

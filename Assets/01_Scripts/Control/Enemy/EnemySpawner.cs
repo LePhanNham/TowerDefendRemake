@@ -18,18 +18,20 @@ public class EnemySpawner : SingletonMono<EnemySpawner>
         currentLevelConfig = levelConfig;
         currentWaveIndex = 0;
         maxWaveIndex = levelConfig.TotalWave;
+        currentWayPoint = LevelManager.Instance.WayPoint;
+        Debug.Log(currentWaveIndex);
+        Debug.Log(maxWaveIndex);
     }
 
     
     public void SpawnLevel()
     {
-        if (currentWaveIndex+1 >= maxWaveIndex)
+        if (currentWaveIndex >= maxWaveIndex)
         {
             return;
         }
-        currentWaveIndex++;
         StartCoroutine(SpawnWaveEnemy(currentLevelConfig.EnemyWave[currentWaveIndex]));
-        
+        currentWaveIndex++;
     }
 
     IEnumerator SpawnWaveEnemy(WaveEnemyConfig waveEnemyConfig)
@@ -45,11 +47,15 @@ public class EnemySpawner : SingletonMono<EnemySpawner>
     {
         for (int i = 0; i < enemy.Total; i++)
         {
-            PoolManager.Instance.Spawn(enemy.EnemyConfig.EnemyName, null);
+            var enemyprefab = PoolManager.Instance.Spawn(enemy.EnemyConfig.EnemyName, null);
+            enemyprefab.gameObject.SetActive(true);
+            enemyprefab.GetComponent<EnemyBase>().SetUpWayPoint(currentWayPoint);
+            enemyprefab.transform.position = currentWayPoint.GetWaypointPosition(0);
             yield return new WaitForSeconds(enemy.TimeDelay);
         }
+        
     }
-
+    
     public void CompletedWave()
     {
         OnWaveCompleted.Raise(currentWaveIndex);

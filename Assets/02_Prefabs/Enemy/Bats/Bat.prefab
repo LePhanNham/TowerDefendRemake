@@ -350,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 4755294802997113475}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -694,6 +694,9 @@ GameObject:
   - component: {fileID: 464624169998853907}
   - component: {fileID: 777950173846917102}
   - component: {fileID: 2779054225547459558}
+  - component: {fileID: 8923111066416944789}
+  - component: {fileID: 1682025461290135072}
+  - component: {fileID: -3725561434511837279}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -710,7 +713,7 @@ Transform:
   m_GameObject: {fileID: 6937728849239750264}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26088, y: -1.43141, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -847,6 +850,46 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 4}
   m_Size: {x: 5, y: 4}
   m_Direction: 1
+--- !u!114 &8923111066416944789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937728849239750264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35851e207c33496f9e9fe48d157bc8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWayPoint: {fileID: 0}
+  enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+  currentWayPointIndex: 0
+--- !u!114 &1682025461290135072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937728849239750264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045457e641e64f10ad72895da4499ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 777950173846917102}
+--- !u!114 &-3725561434511837279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937728849239750264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b16839256344acbe0914e7219608c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7931619041736503944
 GameObject:
   m_ObjectHideFlags: 0

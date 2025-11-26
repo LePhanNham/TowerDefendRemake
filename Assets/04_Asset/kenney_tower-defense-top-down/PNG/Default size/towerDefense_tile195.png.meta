@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      towerDefense_tile195_0: -3753672502645675442
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

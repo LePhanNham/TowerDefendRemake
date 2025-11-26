@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _01_Scripts.Data.Enemy;
 using UnityEngine;
 
@@ -9,18 +10,17 @@ namespace _01_Scripts.Data.Level
     {
         [SerializeField] private int levelID;
         [SerializeField] private List<WaveEnemyConfig> enemyWave;
-        public int LevelID { get => levelID; set => levelID = value; }
+        public int LevelID { get => levelID; }
 
         public List<WaveEnemyConfig> EnemyWave
         {
             get => enemyWave;
-            set => enemyWave = value;
         }
         
-        public int TotalWave => enemyWave.Count;
+        public int TotalWave => EnemyWave.Count;
     }
 
-
+    [Serializable]
     public class WaveEnemyConfig
     {
         [SerializeField] private List<GroupEnemy> groupEnemies;
@@ -38,7 +38,7 @@ namespace _01_Scripts.Data.Level
             return count;
         }
     }
-
+    [Serializable]
     public class GroupEnemy
     {
         [SerializeField] private int total;

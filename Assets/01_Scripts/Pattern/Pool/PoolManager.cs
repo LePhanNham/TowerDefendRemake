@@ -6,7 +6,7 @@ using UnityEngine;
 public class PoolManager : SingletonMono<PoolManager>
 {
     [SerializeField] private List<PoolControl> poolInfors = new List<PoolControl>();
-    [SerializeField] private List<PoolableObject> poolList = new List<PoolableObject>();
+    // [SerializeField] private List<PoolableObject> poolList = new List<PoolableObject>();
     private Dictionary<string, PoolControl> poolMapping = new Dictionary<string, PoolControl>();
 
     protected override void Awake()

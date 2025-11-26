@@ -1,5 +1,5 @@
 using System;
-using TMPro;
+// using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +10,7 @@ public class CanvasGamePlay : UICanvas
     [SerializeField] private IntEventControl onWaveCompleted;
     [SerializeField] private Button waveButton;
     [SerializeField] private int currentWaveIndex;
-    [SerializeField] private TextMeshProUGUI waveText;
+    // [SerializeField] private TextMeshProUGUI waveText;
     public RectTransform HUDAnchor { get => hubAnchor; set => hubAnchor = value; }
 
     protected override void Awake()
@@ -35,7 +35,7 @@ public class CanvasGamePlay : UICanvas
 
     private void SetUpBtn(int currentWave)
     {
-        waveText.text = currentWave.ToString();
+        // waveText.text = currentWave.ToString();
         waveButton.gameObject.SetActive(true);
     }
 }

@@ -1,12 +1,12 @@
 using DG.Tweening;
-using TMPro;
+// using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CanvasInitialize : UICanvas
 {
     [SerializeField] private Slider loadingValueSlider;
-    [SerializeField] private TextMeshProUGUI loadingValueText;
+    // [SerializeField] private TextMeshProUGUI loadingValueText;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Button startButton;
     // protected override void Awake()

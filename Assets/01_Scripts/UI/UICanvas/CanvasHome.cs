@@ -1,6 +1,6 @@
+using CONSTANT;
 using UnityEngine;
 using UnityEngine.UI;
-using CONSTANT;
 public class CanvasHome : UICanvas
 {
     [SerializeField] private Button startGamePlay;
