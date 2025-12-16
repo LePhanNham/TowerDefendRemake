@@ -26,5 +26,10 @@ namespace CONSTANT
         public static string Action = "Action";
     }
 
+    public static class PathName
+    {
+        public static string turretPath = "TurretConfigs";
+        public static string levelPath = "LevelConfigs";
+    }
 
 }

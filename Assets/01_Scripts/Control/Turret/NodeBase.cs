@@ -1,14 +1,16 @@
 ﻿
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NodeBase : MonoBehaviour
 {
-    // [SerializeField] 
-    private Vector3 position;
-
+    private Vector3 buildPosition;
     private void Awake()
     {
-        position = transform.position;
+        buildPosition = transform.position;
+    }
+    private void OnMouseDown()
+    {
+        TurretCardPanel.Instance.Show(buildPosition);
     }
 }

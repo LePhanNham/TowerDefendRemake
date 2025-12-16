@@ -1,0 +1,13 @@
+Shoot fx.png
+size:47,47
+filter:Linear,Linear
+pma:true
+fx1
+bounds:2,24,43,21
+offsets:3,3,49,28
+fx2
+bounds:2,2,20,20
+offsets:2,1,24,23
+fx3
+bounds:24,2,20,20
+offsets:2,2,25,24

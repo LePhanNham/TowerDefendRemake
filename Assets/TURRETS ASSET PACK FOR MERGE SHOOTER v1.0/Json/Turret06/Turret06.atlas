@@ -1,0 +1,17 @@
+Turret06.png
+size:362,123
+filter:Linear,Linear
+pma:true
+base
+bounds:139,8,137,113
+offsets:9,10,157,131
+gun1
+bounds:278,13,51,108
+offsets:8,7,67,122
+gun2
+bounds:331,47,29,74
+offsets:9,5,47,84
+shade
+bounds:2,2,119,135
+offsets:5,4,130,149
+rotate:90
