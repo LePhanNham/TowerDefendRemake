@@ -25,3 +25,37 @@ MonoBehaviour:
       enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
       timeDelays: 3
     timeBetweenWaves: 10
+  - groupEnemies:
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    timeBetweenWaves: 10
+  - groupEnemies:
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    timeBetweenWaves: 10
+  - groupEnemies:
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    - total: 2
+      enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
+      timeDelays: 3
+    timeBetweenWaves: 10
+  CostBase: 100

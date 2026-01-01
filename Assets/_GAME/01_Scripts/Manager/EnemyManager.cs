@@ -22,5 +22,13 @@ public class EnemyManager : SingletonMono<EnemyManager>
     public void Unregister(EnemyBase enemy)
     {
         activeEnemies.Remove(enemy);
+        GameEventManager.AddMoneyUpdated(enemy.EnemyConfig.Gold);
+
     }
+
+    public int EnemyCountInWave()
+    {
+        return activeEnemies.Count;
+    }
+    
 }

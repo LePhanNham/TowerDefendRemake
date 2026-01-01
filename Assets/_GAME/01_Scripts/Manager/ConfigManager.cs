@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using _01_Scripts.Data.Level;
 using UnityEngine;
 
@@ -22,18 +23,13 @@ public class ConfigManager : SingletonMono<ConfigManager>
         levelConfigs = Resources.LoadAll<LevelConfig>(CONSTANT.PathName.LevelPath).ToList();
     }
 
+
     public List<TurretConfig> GetTurretConfigs()
     {
         return turretConfigs;
     }
 
-    // public void LoadAllTurretCard()
-    // {
-    //     foreach (TurretConfig config in turretConfigs)
-    //     {
-    //         config.
-    //     }
-    // }
+
     public List<LevelConfig> GetLevelConfigs()
     {
         return levelConfigs;

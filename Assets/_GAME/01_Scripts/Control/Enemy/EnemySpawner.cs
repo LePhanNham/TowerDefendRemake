@@ -12,6 +12,7 @@ public class EnemySpawner : SingletonMono<EnemySpawner>
     private int currentWaveIndex;
     private int maxWaveIndex;
     
+    public int MaxWaveIndex => maxWaveIndex;
 
     public void Init(LevelConfig levelConfig)
     {
@@ -51,6 +52,12 @@ public class EnemySpawner : SingletonMono<EnemySpawner>
             enemyBase.SetUpWayPoint(currentWayPoint);
             yield return new WaitForSeconds(enemy.TimeDelay);
         }
+
+        yield return new WaitUntil((() =>
+        {
+            return EnemyManager.Instance.EnemyCountInWave() == 0;
+        }));
+        CompletedWave();
     }
 
     

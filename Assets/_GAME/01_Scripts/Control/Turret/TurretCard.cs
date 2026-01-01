@@ -25,11 +25,23 @@ public class TurretCard : MonoBehaviour
 
     public void OnClick()
     {
-        var turretGo = Instantiate(turretConfig.turretPrefab, TurretCardPanel.Instance.StartPos.BuildPosition, Quaternion.identity);
-        var turret = turretGo.GetComponent<TurretBase>();
-        turret.Init(turretConfig);
-        TurretCardPanel.Instance.Hide();
-        GameEventManager.OnOnBuildTurretCompleted(TurretCardPanel.Instance.StartPos);
+        if (EconomyManager.Instance.CurrentEconomy >= cost)
+        {
+            var turretGo = Instantiate(turretConfig.turretPrefab, TurretCardPanel.Instance.StartPos.BuildPosition, Quaternion.identity);
+            var turret = turretGo.GetComponent<TurretBase>();
+            turret.Init(turretConfig);
+            TurretCardPanel.Instance.Hide();
+            GameEventManager.BuildTurretCompleted(TurretCardPanel.Instance.StartPos);
+            GameEventManager.UseMoneyUpdated(cost);
+        }
+        else
+        {
+            ShowMessage(CONSTANT.Message.UnableToBuy);
+        }
     }
-    
+
+    public void ShowMessage(string message)
+    {
+        GameEventManager.ShowUnableToBuy(message);
+    }
 }

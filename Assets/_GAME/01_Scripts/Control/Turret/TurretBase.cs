@@ -1,15 +1,16 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TurretBase : MonoBehaviour
 {
     protected TurretConfig TurretConfig;
     protected EnemyBase CurrentTarget;
     protected int CurrentLevel;
-    private TurretLevel currentTurretLevel;
+    protected TurretLevel CurrentTurretLevel;
 
-    private float fireRate;
+    protected float FireRate;
 
     protected float RangeAttack;
     // [SerializeField] public int level;
@@ -21,9 +22,9 @@ public class TurretBase : MonoBehaviour
     {
         this.TurretConfig = config;
         this.CurrentLevel = 0;
-        this.currentTurretLevel = config.turretLevels[CurrentLevel];
-        this.fireRate = currentTurretLevel.fireRate;
-        this.RangeAttack = currentTurretLevel.radius;
+        this.CurrentTurretLevel = config.turretLevels[CurrentLevel];
+        this.FireRate = CurrentTurretLevel.fireRate;
+        this.RangeAttack = CurrentTurretLevel.range;
     }
 
     protected virtual void Update()
@@ -42,15 +43,16 @@ public class TurretBase : MonoBehaviour
         HandleFire();
     }
 
-    protected void HandleFire()
+    protected virtual void HandleFire()
     {
-        if (CurrentTarget == null) return;
-        fireRate -= Time.deltaTime;
-        if (fireRate <= 0)
-        {
-            Attack();
-            fireRate = currentTurretLevel.fireRate;
-        }
+
+    }
+
+    protected void HandleRotate()
+    {
+        Vector3 direction = CurrentTarget.transform.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle-90);
     }
     protected virtual void Attack(Action callback = null)
     {
@@ -66,6 +68,11 @@ public class TurretBase : MonoBehaviour
         }
     }
 
+    protected virtual void SellTurretBase(string notice = null, Action callback = null)
+    {
+        var cost = TurretConfig.turretLevels[CurrentLevel].cost * 2/3;
+        
+    }
     private void FindTarget()
     {
         if (EnemyManager.Instance == null) return;
@@ -81,10 +88,11 @@ public class TurretBase : MonoBehaviour
             if (!IsValidEnemy(e)) continue;
 
             float dist = Vector3.Distance(transform.position, e.transform.position);
-            if (dist < minDist && dist<=RangeAttack)
+            if (dist<= RangeAttack)
             {
                 minDist = dist;
                 nearestEnemy = e;
+                break;
             }
         }
 
@@ -106,7 +114,7 @@ public class TurretBase : MonoBehaviour
 
     protected bool IsTargetInRange()
     {
-        return Vector3.Distance(transform.position, CurrentTarget.transform.position) <= currentTurretLevel.radius;
+        return Vector3.Distance(transform.position, CurrentTarget.transform.position) <= CurrentTurretLevel.range;
     }
 
 

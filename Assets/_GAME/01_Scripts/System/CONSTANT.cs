@@ -43,4 +43,12 @@ namespace CONSTANT
         public static readonly string BallistaBullet = "BallistaBullet";
     }
 
+    public static class Message
+    {
+        public static readonly string Success = "Success";
+        public static readonly string Fail = "Fail";
+        public static readonly string UnableToBuy = "Don't enough money";
+        
+    }
+
 }

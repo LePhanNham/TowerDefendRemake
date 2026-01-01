@@ -51,17 +51,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Unit
+    uniqueID: 3432619481
+    locked: 0
+  - name: Turret
+    uniqueID: 1073116395
+    locked: 0
   - name: Bullet
     uniqueID: 3774359193
     locked: 0
   - name: Enemy
     uniqueID: 1720945813
-    locked: 0
-  - name: Turret
-    uniqueID: 1073116395
-    locked: 0
-  - name: Unit
-    uniqueID: 3432619481
     locked: 0
   m_RenderingLayers:
   - Default

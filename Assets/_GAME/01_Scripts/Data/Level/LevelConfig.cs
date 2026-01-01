@@ -18,6 +18,7 @@ namespace _01_Scripts.Data.Level
         }
         
         public int TotalWave => EnemyWave.Count;
+        public int CostBase;
     }
 
     [Serializable]

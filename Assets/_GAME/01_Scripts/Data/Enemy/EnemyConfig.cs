@@ -12,6 +12,8 @@ namespace _01_Scripts.Data.Enemy
         [SerializeField] private int atk;
         [SerializeField] private int def;
         [SerializeField] private int speed;
+        [SerializeField] private int gold;
+        public int Gold => gold;
 
         public string EnemyName
         {

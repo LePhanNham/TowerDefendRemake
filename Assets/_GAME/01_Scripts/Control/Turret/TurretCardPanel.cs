@@ -24,8 +24,6 @@ public class TurretCardPanel : SingletonMono<TurretCardPanel>
         base.Awake();
         canvasGroup.alpha = 0;
         panel.localScale = Vector3.zero;
-        gameObject.SetActive(false);
-        
     }
 
     private void Start()
@@ -87,7 +85,7 @@ public class TurretCardPanel : SingletonMono<TurretCardPanel>
         canvasGroup.DOFade(0, panelFadeTime)
             .OnComplete(() =>
             {
-                gameObject.SetActive(false);
+               // gameObject.SetActive(false);
             });
     }
 

@@ -7,13 +7,16 @@ public abstract class EnemyBase : FSMSystem
 {
     [Header("Base Enemy Stats")] 
     [SerializeField] protected WayPoint currentWayPoint;
-    
     [SerializeField] protected EnemyConfig enemyConfig;
+    
     protected PoolableObject PoolableObject;
     protected HealthControl HpControl;
     protected bool isDead;
     protected bool isAlive;
+    
+    [Header("Get Data")]
     public bool IsAlive => isAlive;
+    public EnemyConfig EnemyConfig => enemyConfig;
     protected Vector3 Pos;
     public int currentWayPointIndex;
     public HealthControl HPControl
@@ -43,7 +46,6 @@ public abstract class EnemyBase : FSMSystem
         isDead = false;
         isAlive = true;
         currentWayPointIndex = 0;
-
         EnemyManager.Instance?.Register(this);
     }
 
@@ -85,8 +87,8 @@ public abstract class EnemyBase : FSMSystem
     {
         isAlive = false;
         EnemyManager.Instance.Unregister(this);
-
         PoolManager.Instance.ReleaseToPool(enemyConfig.EnemyName, PoolableObject);
+        PoolManager.Instance.Despawn(enemyConfig.EnemyName, PoolableObject);
     }
 }
 

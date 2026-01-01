@@ -19,12 +19,12 @@ public class NodeBase : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventManager.OnBuildTurretCompleted += OnHide;
+        GameEventManager.onBuildTurretCompleted += OnHide;
     }
 
     private void OnDisable()
     {
-        GameEventManager.OnBuildTurretCompleted -= OnHide;
+        GameEventManager.onBuildTurretCompleted -= OnHide;
     }
     private void OnHide(NodeBase obj)
     {
