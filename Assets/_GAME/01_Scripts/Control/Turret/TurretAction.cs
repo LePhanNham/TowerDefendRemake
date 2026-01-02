@@ -10,7 +10,7 @@ public class TurretAction : MonoBehaviour
 
     public void OnMouseDown()
     {
-        panel.SetActive(true);
+        if (EnemyManager.Instance.EnemyCountInWave()==0) panel.SetActive(true);
     }
 }
 

@@ -33,6 +33,7 @@ public class TurretCard : MonoBehaviour
             TurretCardPanel.Instance.Hide();
             GameEventManager.BuildTurretCompleted(TurretCardPanel.Instance.StartPos);
             GameEventManager.UseMoneyUpdated(cost);
+            TutorialManager.Instance.ReportAction(TutorialActionType.BuildTower);
         }
         else
         {

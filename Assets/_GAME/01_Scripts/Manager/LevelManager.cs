@@ -24,7 +24,6 @@ public class LevelManager : SingletonMono<LevelManager>
     private void Start()
     {
         EnemySpawner.Instance.Init(levelConfig);
-        EnemySpawner.Instance.SpawnLevel();
     }
 
     public void InitializeEcomomyToPlayer()

@@ -1978,6 +1978,7 @@ GameObject:
   - component: {fileID: 6271678412267385035}
   - component: {fileID: 2201558352343804645}
   - component: {fileID: 8326877892014606200}
+  - component: {fileID: 6648194453105915903}
   m_Layer: 0
   m_Name: TurretCard
   m_TagString: Untagged
@@ -2032,7 +2033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: ProjectAssembly::TurretCard
   nameTurret: 
   spriteRenderer: {fileID: 7227157802060711399}
-  turretPrefab: {fileID: 8399871409842506973, guid: a1b6ef96bd4f6924d9d1b13ee8e00f1d, type: 3}
+  turretConfig: {fileID: 0}
   cost: 0
   btnListener: {fileID: 8326877892014606200}
 --- !u!114 &8326877892014606200
@@ -2079,6 +2080,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6648194453105915903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577417902890969091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a52f0263fba4cc58ff791bbb98eb750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialTarget
+  ID: FireTurret
 --- !u!1 &8853991155537718898
 GameObject:
   m_ObjectHideFlags: 0

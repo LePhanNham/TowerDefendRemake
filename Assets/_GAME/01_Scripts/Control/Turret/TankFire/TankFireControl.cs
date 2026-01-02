@@ -47,9 +47,4 @@ public class TankFireControl : TurretBase
         PoolManager.Instance.Spawn(CONSTANT.BulletName.BallistaBullet, data);
     }
 
-    protected override void UpgradeLevel(string notice = null, Action callback = null)
-    {
-        base.UpgradeLevel(notice, callback);
-        
-    }
 }

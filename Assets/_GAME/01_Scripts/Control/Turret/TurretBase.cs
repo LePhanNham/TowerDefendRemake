@@ -1,6 +1,7 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class TurretBase : MonoBehaviour
@@ -59,19 +60,26 @@ public class TurretBase : MonoBehaviour
         // follow by turret type
     }
 
-    protected virtual void UpgradeLevel(string notice = null, Action callback = null)
+    public void UpgradeLevel(string notice = null, Action callback = null)
     {
-        if (CurrentLevel < TurretConfig.levelMax) CurrentLevel++;
+        if (CurrentLevel < TurretConfig.levelMax)
+        {
+            CurrentLevel++;
+            callback?.Invoke();
+        }
         else
         {
             GameEventManager.OnLevelMaxUpdated?.Invoke(notice);
         }
+        
     }
 
-    protected virtual void SellTurretBase(string notice = null, Action callback = null)
+    public void SellTurretBase(string notice = null, Action callback = null)
     {
         var cost = TurretConfig.turretLevels[CurrentLevel].cost * 2/3;
-        
+        EconomyManager.Instance.AddMoney(cost);
+        callback?.Invoke();
+        Destroy(gameObject);
     }
     private void FindTarget()
     {

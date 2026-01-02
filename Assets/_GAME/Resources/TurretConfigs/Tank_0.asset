@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Tank_0
   m_EditorClassIdentifier: Assembly-CSharp::TurretConfig
   id: 0
-  costBaseTurret: 40
+  costBaseTurret: 0
   levelMax: 3
   turretLevels:
   - level: 1
     damage: 2
     cost: 0
-    range: 0
+    range: 2
     fireRate: 1
     bulletPrefab: {fileID: 6590333040596217728, guid: 2a89edc80c65ca34397ec3cdfae2f1cf, type: 3}
     bulletPoolName: BallistaBullet
@@ -27,7 +27,7 @@ MonoBehaviour:
   - level: 2
     damage: 2
     cost: 0
-    range: 0
+    range: 2
     fireRate: 0.8
     bulletPrefab: {fileID: 6590333040596217728, guid: 2a89edc80c65ca34397ec3cdfae2f1cf, type: 3}
     bulletPoolName: BallistaBullet
@@ -35,7 +35,7 @@ MonoBehaviour:
   - level: 3
     damage: 2
     cost: 0
-    range: 0
+    range: 2
     fireRate: 0.7
     bulletPrefab: {fileID: 6590333040596217728, guid: 2a89edc80c65ca34397ec3cdfae2f1cf, type: 3}
     bulletPoolName: BallistaBullet

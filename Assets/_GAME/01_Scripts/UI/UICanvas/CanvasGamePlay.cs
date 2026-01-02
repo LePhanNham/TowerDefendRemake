@@ -18,11 +18,14 @@ public class CanvasGamePlay : UICanvas
     protected override void Awake()
     {
         base.Awake();
+        waveButton.GetComponent<TutorialTarget>().SetID("StartBtn");
         waveButton.onClick.AddListener(() =>
         {
             EnemySpawner.Instance.SpawnLevel();
             waveButton.gameObject.SetActive(false);
+            TutorialManager.Instance.ReportAction(TutorialActionType.StartWave);
         });
+        // waveButton.gameObject.SetActive(true);
     }
 
     public void OnEnable()

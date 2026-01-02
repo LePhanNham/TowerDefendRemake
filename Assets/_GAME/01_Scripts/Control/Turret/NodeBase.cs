@@ -7,14 +7,23 @@ using UnityEngine;
 public class NodeBase : MonoBehaviour
 {
     private Vector3 buildPosition;
+    private TutorialTarget tutorialTarget;
     public Vector3 BuildPosition => buildPosition;
     private void Awake()
     {
         buildPosition = transform.position;
+        tutorialTarget = GetComponent<TutorialTarget>();
     }
+
+    private void Start()
+    {
+        tutorialTarget.SetID("StartNode");
+    }
+
     private void OnMouseDown()
     {
         TurretCardPanel.Instance.Show(this);
+        TutorialManager.Instance.ReportAction(TutorialActionType.SelectNode);
     }
 
     private void OnEnable()

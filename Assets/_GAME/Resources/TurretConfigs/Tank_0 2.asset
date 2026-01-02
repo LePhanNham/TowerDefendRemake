@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tank_0 2
   m_EditorClassIdentifier: Assembly-CSharp::TurretConfig
   id: 0
-  costBaseTurret: 40
+  costBaseTurret: 0
   levelMax: 3
   turretLevels:
   - level: 1
