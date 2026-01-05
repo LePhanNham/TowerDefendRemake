@@ -6,11 +6,15 @@ using UnityEngine.EventSystems;
 
 public class TurretAction : MonoBehaviour
 {
-    [SerializeField] private GameObject panel;
+    [SerializeField] private TurretInformation panel;
 
     public void OnMouseDown()
     {
-        if (EnemyManager.Instance.EnemyCountInWave()==0) panel.SetActive(true);
+        if (EnemyManager.Instance.EnemyCountInWave()==0)
+        {
+            panel.FadeInOpen();
+            TutorialManager.Instance.ReportAction(TutorialActionType.ShowTurretPopup);
+        }
     }
 }
 

@@ -1,8 +1,7 @@
 ﻿
 using System;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
+
 
 public class TurretBase : MonoBehaviour
 {
@@ -12,13 +11,8 @@ public class TurretBase : MonoBehaviour
     protected TurretLevel CurrentTurretLevel;
 
     protected float FireRate;
-
     protected float RangeAttack;
-    // [SerializeField] public int level;
-    // [SerializeField] public int damage;
-    // [SerializeField] public int cost;
-    // [SerializeField] public float radius;
-    // [SerializeField] public float fireRate;
+    protected float FireCooldown;
     public virtual void Init(TurretConfig config)
     {
         this.TurretConfig = config;
@@ -26,6 +20,8 @@ public class TurretBase : MonoBehaviour
         this.CurrentTurretLevel = config.turretLevels[CurrentLevel];
         this.FireRate = CurrentTurretLevel.fireRate;
         this.RangeAttack = CurrentTurretLevel.range;
+        FireCooldown = 0;
+        GetComponent<TutorialTarget>().SetID(CONSTANT.TutorialMessage.step_5);
     }
 
     protected virtual void Update()
@@ -57,7 +53,7 @@ public class TurretBase : MonoBehaviour
     }
     protected virtual void Attack(Action callback = null)
     {
-        // follow by turret type
+        
     }
 
     public void UpgradeLevel(string notice = null, Action callback = null)
@@ -66,6 +62,7 @@ public class TurretBase : MonoBehaviour
         {
             CurrentLevel++;
             callback?.Invoke();
+            TutorialManager.Instance.ReportAction(TutorialActionType.UpgradeTurret);
         }
         else
         {
@@ -78,6 +75,7 @@ public class TurretBase : MonoBehaviour
     {
         var cost = TurretConfig.turretLevels[CurrentLevel].cost * 2/3;
         EconomyManager.Instance.AddMoney(cost);
+        TutorialManager.Instance.ReportAction(TutorialActionType.SellTurret);
         callback?.Invoke();
         Destroy(gameObject);
     }
@@ -96,14 +94,12 @@ public class TurretBase : MonoBehaviour
             if (!IsValidEnemy(e)) continue;
 
             float dist = Vector3.Distance(transform.position, e.transform.position);
-            if (dist<= RangeAttack)
+            if (dist < minDist && dist <= RangeAttack)
             {
                 minDist = dist;
                 nearestEnemy = e;
-                break;
             }
         }
-
         CurrentTarget = nearestEnemy;
     }
 

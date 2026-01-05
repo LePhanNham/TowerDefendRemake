@@ -25,8 +25,8 @@ public class TurretLevel
     [SerializeField] public int cost;
     [SerializeField] public float range;
     [SerializeField] public float fireRate;
-    public GameObject bulletPrefab;
-    public string bulletPoolName;
+    [SerializeField] public GameObject bulletPrefab;
+    [SerializeField] public string bulletPoolName;
     [FormerlySerializedAs("BulletSpeed")] [SerializeField] public float bulletSpeed;
 
     public TurretLevel(int level, int damage, int cost, float range, float fireRate)

@@ -24,6 +24,18 @@ public class LevelManager : SingletonMono<LevelManager>
     private void Start()
     {
         EnemySpawner.Instance.Init(levelConfig);
+        
+    }
+
+    private void OnEnable()
+    {
+        GameEventManager.onUpdatedEnemiesDie += UpdateEnemiesDead;
+        
+    }
+
+    private void OnDisable()
+    {
+        GameEventManager.onUpdatedEnemiesDie -= UpdateEnemiesDead;
     }
 
     public void InitializeEcomomyToPlayer()
@@ -34,7 +46,7 @@ public class LevelManager : SingletonMono<LevelManager>
     public void Init(WaveEnemyConfig waveEnemyConfig)
     {
         totalEnemies = waveEnemyConfig.GetTotalEnemies();
-
+        InitializeEcomomyToPlayer();
     }
     public void UpdateEnemiesDead()
     {
@@ -42,6 +54,11 @@ public class LevelManager : SingletonMono<LevelManager>
         if (currentDeadEnemies == totalEnemies)
         {
             onUpdatedEnemies.Raise(currentDeadEnemies);
+        }
+
+        if (currentDeadEnemies == 1 && !TutorialManager.Instance.IsTutorialFinished)
+        {
+            TutorialManager.Instance.ReportAction(TutorialActionType.EnemyKilled);
         }
     }
     

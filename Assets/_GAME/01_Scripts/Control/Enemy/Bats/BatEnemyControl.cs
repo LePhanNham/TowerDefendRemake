@@ -15,6 +15,7 @@ namespace _01_Scripts.Control.Enemy.Bats
         protected override void Awake()
         {
             base.Awake();
+            enemyDataBinding = GetComponent<EnemyDataBinding>();
             movementState = new BatEnemyMovevement(this,enemyDataBinding);
             deadState = new BatEnemyDead(this, enemyDataBinding);
 

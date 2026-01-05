@@ -18,12 +18,12 @@ public class TankFireControl : TurretBase
     {
         if (CurrentTarget == null) return;
         HandleRotate();
-        FireRate -= Time.deltaTime;
-        if (FireRate <= 0)
-        {
-            Attack();
-            FireRate = CurrentTurretLevel.fireRate;
-        }
+        FireCooldown -= Time.deltaTime;
+        if (FireCooldown > 0) return;
+
+        Attack();
+        FireCooldown = CurrentTurretLevel.fireRate;
+
     }
     protected override void Attack(Action callback = null)
     {

@@ -46,19 +46,23 @@ public abstract class EnemyBase : FSMSystem
         isDead = false;
         isAlive = true;
         currentWayPointIndex = 0;
+        HpControl.Init(100);
         EnemyManager.Instance?.Register(this);
+        HPControl.OnDead += Die;
     }
 
     protected virtual void OnDisable()
     {
         isAlive = false;
         EnemyManager.Instance?.Unregister(this);
+        HPControl.OnDead -= Die;
     }
 
     protected override void Update()
     {
         if (!enabled) return;
         OnMove();
+        
     }
 
 
@@ -75,11 +79,11 @@ public abstract class EnemyBase : FSMSystem
 
         isDead = true;
         isAlive = false;
-
         EnemyManager.Instance.Unregister(this);
         OnDie();
-
+        GameEventManager.UpdatedEnemiesDie();
         PoolManager.Instance.ReleaseToPool(enemyConfig.EnemyName, PoolableObject);
+        PoolManager.Instance.Despawn(enemyConfig.EnemyName, PoolableObject);
     }
 
 

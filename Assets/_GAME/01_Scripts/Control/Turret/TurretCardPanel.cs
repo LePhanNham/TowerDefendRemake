@@ -61,7 +61,7 @@ public class TurretCardPanel : SingletonMono<TurretCardPanel>
         {
             var child = panel.GetChild(i).GetComponent<TurretCard>();
             var tutor = child.GetComponent<TutorialTarget>();
-            if (i==0) tutor.SetID("FireTurret");
+            if (i==0) tutor.SetID(CONSTANT.TutorialMessage.step_2);
             FadeCardIn(child, i* cardDelay);
         }
     }

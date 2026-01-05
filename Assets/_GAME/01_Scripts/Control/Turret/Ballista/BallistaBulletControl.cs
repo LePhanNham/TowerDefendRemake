@@ -95,17 +95,16 @@ public class BallistaBulletControl : PoolableObject
         }
 
         if (enemy == null || enemy.IsDead) return;
-
         HitTarget(enemy);
     }
 
     private void HitTarget(EnemyBase enemy)
     {
+        enemy.HPControl.TakeDamage(damage);
         if (isHit) return; // Double check
         isHit = true;
         col.enabled = false;
 
-        // enemy.HPControl.TakeDamage(damage);
         DespawnImmediate();
     }
 

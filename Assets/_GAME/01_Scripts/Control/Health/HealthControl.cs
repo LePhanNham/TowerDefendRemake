@@ -23,7 +23,7 @@ public class HealthControl : MonoBehaviour
         PoolManager.Instance.Spawn(nameof(HpHub), hudData);
         if (currentHp <= 0)
         {
-            OnDead?.Invoke();
+            Dead();
         }
     }
     public bool IsFullHp => currentHp >= maxHp;

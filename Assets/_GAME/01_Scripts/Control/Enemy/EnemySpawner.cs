@@ -29,12 +29,14 @@ public class EnemySpawner : SingletonMono<EnemySpawner>
         {
             return;
         }
+        
         StartCoroutine(SpawnWaveEnemy(currentLevelConfig.EnemyWave[currentWaveIndex]));
         currentWaveIndex++;
     }
 
     IEnumerator SpawnWaveEnemy(WaveEnemyConfig waveEnemyConfig)
     {
+        LevelManager.Instance.Init(waveEnemyConfig);
         foreach (var groupEnemy in waveEnemyConfig.GroupEnemies)
         {
             StartCoroutine(SpawnGroupEnemy(groupEnemy));

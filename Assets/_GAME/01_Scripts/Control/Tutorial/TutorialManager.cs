@@ -11,7 +11,6 @@ public class TutorialManager : SingletonMono<TutorialManager>
     public GameObject tutorialPanel;   // Panel chứa text hướng dẫn
     public TextMeshProUGUI instructionText;
     public GameObject handPointer;     // Mũi tên/Bàn tay chỉ dẫn
-    public GameObject blockerMask;     // Tấm nền chặn thao tác (Raycast Target)
 
     [Header("Data")]
     public List<TutorialStep> steps;   // Kéo thả các file ScriptableObject vào đây
@@ -67,7 +66,6 @@ public class TutorialManager : SingletonMono<TutorialManager>
 
     public void SetInstruction(string text)
     {
-        // Kill tween cũ (tránh chồng animation)
         typingTween?.Kill();
 
         instructionText.text = "";
@@ -128,8 +126,7 @@ public class TutorialManager : SingletonMono<TutorialManager>
     public void ReportAction(TutorialActionType action)
     {
         if (currentStep == null) return;
-
-        // Nếu hành động vừa làm trùng khớp với yêu cầu của bước hiện tại
+        if (isTutorialFinished) return;
         if (currentStep.requiredAction == action)
         {
             Debug.Log("Hoàn thành bước: " + currentStep.stepID);

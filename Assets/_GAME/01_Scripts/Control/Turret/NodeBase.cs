@@ -17,7 +17,7 @@ public class NodeBase : MonoBehaviour
 
     private void Start()
     {
-        tutorialTarget.SetID("StartNode");
+        tutorialTarget.SetID(CONSTANT.TutorialMessage.step_1);
     }
 
     private void OnMouseDown()

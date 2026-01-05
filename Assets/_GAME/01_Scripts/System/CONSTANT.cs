@@ -51,4 +51,15 @@ namespace CONSTANT
         
     }
 
+    public static class TutorialMessage
+    {
+        public static readonly string step_1 = "StartNode";
+        public static readonly string step_2 = "FireTurret";
+        public static readonly string step_3 = "StartBtn";
+        public static readonly string step_4 = "Enemy";
+        public static readonly string step_5 = "TurretInformation";
+        public static readonly string step_6 = "Upgrade";
+        public static readonly string step_7 = "Sell";
+    }
+
 }

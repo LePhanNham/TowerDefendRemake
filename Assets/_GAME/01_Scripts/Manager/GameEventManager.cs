@@ -15,6 +15,7 @@ public static class GameEventManager
     
     public static event Action<TurretBase> onUpgradeTurret;
     public static event Action<TurretBase> onSellTurret;
+    public static event Action onUpdatedEnemiesDie;
     
     public static void BuildTurretCompleted(NodeBase obj)
     {
@@ -36,13 +37,18 @@ public static class GameEventManager
         onShowUnableToBuy?.Invoke(msg);
     }
 
-    private static void UpgradeTurret(TurretBase obj)
+    public static void UpgradeTurret(TurretBase obj)
     {
         onUpgradeTurret?.Invoke(obj);
     }
 
-    private static void OnOnSellTurret(TurretBase obj)
+    public static void SellTurret(TurretBase obj)
     {
         onSellTurret?.Invoke(obj);
+    }
+
+    public static void UpdatedEnemiesDie()
+    {
+        onUpdatedEnemiesDie?.Invoke();
     }
 }

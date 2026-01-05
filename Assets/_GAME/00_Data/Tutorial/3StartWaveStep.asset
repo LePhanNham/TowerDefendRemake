@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
   stepID: 3
   instructionText: Start wave !
-  requiredAction: 4
+  requiredAction: 3
   targetID: StartBtn
