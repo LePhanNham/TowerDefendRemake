@@ -9,11 +9,20 @@ public class TurretCard : MonoBehaviour
     [SerializeField] public TurretConfig turretConfig;
     [SerializeField] public int cost;
     [SerializeField] public Button btnListener;
-    
+    private CanvasGroup canvasGroup;
     private void Awake()
     {
         btnListener.onClick.AddListener(OnClick);
-}
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    private void OnEnable()
+    {
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;  
+        btnListener.interactable = true;
+    }
+
 
     public void SetUp(TurretConfig config)
     {

@@ -6,12 +6,13 @@ public static class GameEventManager
 {
     public static event Action<NodeBase> onBuildTurretCompleted;
 
-    [Header("UI Event")] public static Action<string> OnLevelMaxUpdated;
+    public static event Action<string> onLevelMaxUpdated;
     
     public static event Action<int> onAddMoneyUpdated;
     public static event Action<int> onUseMoneyUpdated;
 
     public static event Action<string> onShowUnableToBuy; 
+    public static event Action<string> onShowUnableToUpgrade; 
     
     public static event Action<TurretBase> onUpgradeTurret;
     public static event Action<TurretBase> onSellTurret;
@@ -50,5 +51,15 @@ public static class GameEventManager
     public static void UpdatedEnemiesDie()
     {
         onUpdatedEnemiesDie?.Invoke();
+    }
+
+    public static void ShowUnableToUpgrade(string obj)
+    {
+        onShowUnableToUpgrade?.Invoke(obj);
+    }
+
+    public static void LevelMaxUpdated(string obj)
+    {
+        onLevelMaxUpdated?.Invoke(obj);
     }
 }

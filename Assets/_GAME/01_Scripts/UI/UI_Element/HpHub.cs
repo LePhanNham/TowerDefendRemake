@@ -81,6 +81,7 @@ public class HpHub : PoolableObject
             .SetDelay(1f) 
             .OnComplete(() => 
             {
+                PoolManager.Instance.Despawn("HpHub", this);
                 PoolManager.Instance.ReleaseToPool("HpHub", this);
             });
     }

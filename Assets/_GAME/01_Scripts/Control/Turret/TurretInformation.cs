@@ -1,25 +1,55 @@
 ﻿
 using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class TurretInformation : MonoBehaviour
+public class TurretInformation : SingletonMono<TurretInformation>
 {
     [SerializeField] private Button upgradeBtn;
     [SerializeField] private Button sellBtn;
-    [SerializeField] private Button CloseBtn;
-    [SerializeField] private TurretBase turretbase;
+    [FormerlySerializedAs("CloseBtn")] [SerializeField] private Button closeBtn;
+    private TurretBase turretbase;
+    [SerializeField] private TextMeshProUGUI level;
+    [SerializeField] private TextMeshProUGUI damage;
+    [SerializeField] private TextMeshProUGUI cost;
+    [SerializeField] private TextMeshProUGUI range;
+    [SerializeField] private TextMeshProUGUI fireCooldown;
     private CanvasGroup canvasGroup;
 
-    private void Awake()
+    protected override void Awake()
     {
-        upgradeBtn.onClick.AddListener(() => turretbase.UpgradeLevel("Level Max Updated",OnUpgradeSuccess));
-        sellBtn.onClick.AddListener(() => turretbase.SellTurretBase());
-        CloseBtn.onClick.AddListener(FadeOutClose);
+        base.Awake();
+        closeBtn.onClick.AddListener(FadeOutClose);
         canvasGroup = GetComponent<CanvasGroup>();
     }
-    
+
+    public void Show(TurretBase target)
+    {
+        turretbase = target;
+        // remove previous listeners and rebind to current target
+        upgradeBtn.onClick.RemoveAllListeners();
+        sellBtn.onClick.RemoveAllListeners();
+        upgradeBtn.onClick.AddListener(() => turretbase.UpgradeLevel("Level Max Updated", OnUpgradeSuccess));
+        sellBtn.onClick.AddListener(() => turretbase.SellTurretBase());
+        closeBtn.onClick.RemoveAllListeners();
+        closeBtn.onClick.AddListener(FadeOutClose);
+        UpdateUI(turretbase.GetCurrentTurretLevel());
+        // bring panel to front so its interactive elements are above other canvas UI
+        var rt = GetComponent<RectTransform>();
+        if (rt != null) rt.SetAsLastSibling();
+        FadeInOpen();
+    }
+    public void UpdateUI(TurretLevel config)
+    {
+        level.text = "Level " + config.level.ToString();
+        damage.text = config.damage.ToString();
+        cost.text = config.cost.ToString();
+        range.text = config.range.ToString();
+        fireCooldown.text = config.fireRate.ToString();
+    }
     void OnUpgradeSuccess()
     {
         Debug.Log("Upgrade thành công");
@@ -27,10 +57,24 @@ public class TurretInformation : MonoBehaviour
 
     public void FadeInOpen()
     {
+        gameObject.SetActive(true);
+        canvasGroup.alpha = 0;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
         canvasGroup.DOFade(1, 0.5f);
     }
+
     public void FadeOutClose()
     {
-        canvasGroup.DOFade(0, 0.5f);
+        canvasGroup.DOFade(0, 0.5f)
+            .OnStart(() =>
+            {
+                canvasGroup.blocksRaycasts = false;
+                canvasGroup.interactable = false;
+            })
+            .OnComplete(() =>
+            {
+                gameObject.SetActive(false);
+            });
     }
 }

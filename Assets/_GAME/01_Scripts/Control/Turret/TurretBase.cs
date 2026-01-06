@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class TurretBase : MonoBehaviour
 {
+    // panelInformation removed: use shared TurretInformation.Instance instead
     protected TurretConfig TurretConfig;
     protected EnemyBase CurrentTarget;
     protected int CurrentLevel;
     protected TurretLevel CurrentTurretLevel;
-
-    protected float FireRate;
     protected float RangeAttack;
     protected float FireCooldown;
     public virtual void Init(TurretConfig config)
@@ -18,10 +17,11 @@ public class TurretBase : MonoBehaviour
         this.TurretConfig = config;
         this.CurrentLevel = 0;
         this.CurrentTurretLevel = config.turretLevels[CurrentLevel];
-        this.FireRate = CurrentTurretLevel.fireRate;
         this.RangeAttack = CurrentTurretLevel.range;
         FireCooldown = 0;
         GetComponent<TutorialTarget>().SetID(CONSTANT.TutorialMessage.step_5);
+        if (TurretInformation.Instance != null)
+            TurretInformation.Instance.UpdateUI(CurrentTurretLevel);
     }
 
     protected virtual void Update()
@@ -60,20 +60,41 @@ public class TurretBase : MonoBehaviour
     {
         if (CurrentLevel < TurretConfig.levelMax)
         {
-            CurrentLevel++;
-            callback?.Invoke();
-            TutorialManager.Instance.ReportAction(TutorialActionType.UpgradeTurret);
+            if (EconomyManager.Instance.CurrentEconomy >= TurretConfig.turretLevels[CurrentLevel + 1].cost)
+            {
+                GameEventManager.UseMoneyUpdated(TurretConfig.turretLevels[CurrentLevel + 1].cost);
+                CurrentLevel++;
+                SetCurrentLevel(CurrentLevel);
+                callback?.Invoke();
+                TutorialManager.Instance.ReportAction(TutorialActionType.UpgradeTurret);
+                if (TurretInformation.Instance != null)
+                    TurretInformation.Instance.UpdateUI(CurrentTurretLevel);
+                
+            }
+            else
+            {
+                GameEventManager.ShowUnableToUpgrade("Not enough Money to Upgrade Turret");
+            }
         }
         else
         {
-            GameEventManager.OnLevelMaxUpdated?.Invoke(notice);
+            GameEventManager.LevelMaxUpdated(notice);
         }
         
     }
 
+    public void SetCurrentLevel(int level)
+    {
+        CurrentTurretLevel = TurretConfig.turretLevels[level];
+        FireCooldown = CurrentTurretLevel.fireRate;
+        RangeAttack = CurrentTurretLevel.range;
+    }
+    public TurretLevel GetCurrentTurretLevel() {
+        return CurrentTurretLevel;
+    }
     public void SellTurretBase(string notice = null, Action callback = null)
     {
-        var cost = TurretConfig.turretLevels[CurrentLevel].cost * 2/3;
+        var cost = CurrentTurretLevel.cost * 2/3;
         EconomyManager.Instance.AddMoney(cost);
         TutorialManager.Instance.ReportAction(TutorialActionType.SellTurret);
         callback?.Invoke();

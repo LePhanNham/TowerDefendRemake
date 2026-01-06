@@ -21,6 +21,13 @@ namespace _01_Scripts.Control.Enemy.Bats
 
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            // ensure FSM resets to movement state when reused from pool
+            ChangeState(movementState);
+        }
+
         protected override void OnMove()
         {
             ChangeState(movementState);

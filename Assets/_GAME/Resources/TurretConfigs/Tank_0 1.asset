@@ -42,4 +42,4 @@ MonoBehaviour:
     bulletSpeed: 10
   nameTurret: Tower
   spriteRenderer: {fileID: -916057139, guid: de9983cd36d2acf4e9239bb107862159, type: 3}
-  turretPrefab: {fileID: 7394325168276436509, guid: 838ddd56f1964914199dad493a120eb4, type: 3}
+  turretPrefab: {fileID: 1311748017683877021, guid: a856f335357e11a4c808b980f420889a, type: 3}

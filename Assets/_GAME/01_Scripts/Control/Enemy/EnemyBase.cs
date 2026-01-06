@@ -46,7 +46,10 @@ public abstract class EnemyBase : FSMSystem
         isDead = false;
         isAlive = true;
         currentWayPointIndex = 0;
-        HpControl.Init(100);
+        if (enemyConfig != null)
+            HpControl.Init(enemyConfig.Hp);
+        else
+            HpControl.Init(100);
         EnemyManager.Instance?.Register(this);
         HPControl.OnDead += Die;
     }

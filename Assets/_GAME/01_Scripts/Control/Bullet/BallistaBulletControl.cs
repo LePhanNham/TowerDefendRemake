@@ -87,13 +87,11 @@ public class BallistaBulletControl : PoolableObject
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (isHit) return;
-        
         EnemyBase enemy = other.GetComponent<EnemyBase>();
         if (enemy == null)
         {
             enemy = other.GetComponentInParent<EnemyBase>();
         }
-
         if (enemy == null || enemy.IsDead) return;
         HitTarget(enemy);
     }
@@ -113,7 +111,8 @@ public class BallistaBulletControl : PoolableObject
         isHit = true;
         target = null;
 
-        gameObject.SetActive(false);
+        PoolManager.Instance.Despawn(
+            CONSTANT.BulletName.BallistaBullet, this);
         PoolManager.Instance.ReleaseToPool(
             CONSTANT.BulletName.BallistaBullet, this);
     }

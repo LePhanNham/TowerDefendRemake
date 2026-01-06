@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretCardPanel : SingletonMono<TurretCardPanel>
 {
@@ -45,8 +45,12 @@ public class TurretCardPanel : SingletonMono<TurretCardPanel>
     public void Show(NodeBase node)
     {
         startPos = node;
-        gameObject.SetActive(true);
-        overlayBlocker.SetActive(true);
+        panel.gameObject.SetActive(true);
+        if (overlayBlocker != null) overlayBlocker.SetActive(true);
+        // ensure overlay blocker is behind the panel so panel buttons receive clicks
+        if (overlayBlocker != null)
+            overlayBlocker.transform.SetAsLastSibling();
+        panel.SetAsLastSibling();
         DOTween.Kill(panel);
         DOTween.Kill(canvasGroup);
         // reset trang thai
@@ -69,6 +73,7 @@ public class TurretCardPanel : SingletonMono<TurretCardPanel>
     private void FadeCardIn(TurretCard card, float delay)
     {
         card.gameObject.SetActive(true);
+        canvasGroup.blocksRaycasts = true;
         var canvasG = card.GetComponent<CanvasGroup>();
         canvasG.DOKill();
         canvasG.alpha = 0;
@@ -77,27 +82,27 @@ public class TurretCardPanel : SingletonMono<TurretCardPanel>
 
     public void Hide()
     {
-        overlayBlocker.SetActive(true);
+        overlayBlocker.SetActive(false);
         for (int i = 0; i < panel.childCount; i++)
         {
             var child = panel.GetChild(i).GetComponent<TurretCard>();
             FadeCardOut(child, cardDelay);
         }
-        
+        canvasGroup.blocksRaycasts = false;
         canvasGroup.DOFade(0, panelFadeTime)
             .OnComplete(() =>
             {
-               // gameObject.SetActive(false);
+                panel.gameObject.SetActive(false);
             });
     }
-
     private void FadeCardOut(TurretCard card, float delay)
     {
         var canvasG = card.GetComponent<CanvasGroup>();
         canvasG.DOKill();
+        canvasG.interactable = false;
+        canvasG.blocksRaycasts = false;
         canvasG.DOFade(0, 0.1f);
     }
-
     public void BuildCompleted()
     {
         
