@@ -41,6 +41,7 @@ namespace CONSTANT
     public static class BulletName
     {
         public static readonly string BallistaBullet = "BallistaBullet";
+        public static readonly string TankBullet = "TankBullet";
     }
 
     public static class Message
@@ -62,4 +63,8 @@ namespace CONSTANT
         public static readonly string step_7 = "Sell";
     }
 
+    public static class EffectName
+    {
+        public static readonly string TankExplosion = "TankExplosionEffect";
+    }
 }

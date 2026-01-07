@@ -19,7 +19,7 @@ public class TurretBase : MonoBehaviour
         this.CurrentTurretLevel = config.turretLevels[CurrentLevel];
         this.RangeAttack = CurrentTurretLevel.range;
         FireCooldown = 0;
-        GetComponent<TutorialTarget>().SetID(CONSTANT.TutorialMessage.step_5);
+        if (GetComponent<TutorialTarget>()!=null) GetComponent<TutorialTarget>().SetID(CONSTANT.TutorialMessage.step_5);
         if (TurretInformation.Instance != null)
             TurretInformation.Instance.UpdateUI(CurrentTurretLevel);
     }
@@ -58,7 +58,7 @@ public class TurretBase : MonoBehaviour
 
     public void UpgradeLevel(string notice = null, Action callback = null)
     {
-        if (CurrentLevel < TurretConfig.levelMax)
+        if (CurrentLevel < TurretConfig.levelMax-1)
         {
             if (EconomyManager.Instance.CurrentEconomy >= TurretConfig.turretLevels[CurrentLevel + 1].cost)
             {

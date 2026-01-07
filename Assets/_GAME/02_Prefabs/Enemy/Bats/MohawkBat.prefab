@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2099488701998406660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1451070262153867960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329894948578777259}
+  m_Layer: 6
+  m_Name: Hub
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &329894948578777259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451070262153867960}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 779697675781092889}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119818813974921454
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +108,10 @@ GameObject:
   - component: {fileID: 2906796373231863027}
   - component: {fileID: 4706194146965926338}
   - component: {fileID: 8445734374065242723}
+  - component: {fileID: 8939907814156516674}
+  - component: {fileID: 3499250308629628242}
+  - component: {fileID: 5842937174041533610}
+  - component: {fileID: 4739620792165318528}
   m_Layer: 6
   m_Name: MohawkBat
   m_TagString: Enemy
@@ -99,6 +134,7 @@ Transform:
   m_Children:
   - {fileID: 2099488701998406660}
   - {fileID: 4495424816549761917}
+  - {fileID: 329894948578777259}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2912166577084347246
@@ -230,6 +266,61 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 4}
   m_Size: {x: 5, y: 4}
   m_Direction: 1
+--- !u!114 &8939907814156516674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188862402292411772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35851e207c33496f9e9fe48d157bc8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_01_Scripts.Control.Enemy.Bats.BatEnemyControl
+  currentWayPoint: {fileID: 0}
+  enemyConfig: {fileID: 11400000, guid: fc98098a3cbb02341a4c4ed4858a6d0f, type: 2}
+  currentWayPointIndex: 0
+--- !u!114 &3499250308629628242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188862402292411772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045457e641e64f10ad72895da4499ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_01_Scripts.Control.Enemy.EnemyDataBinding
+  _animator: {fileID: 4706194146965926338}
+--- !u!114 &5842937174041533610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188862402292411772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b16839256344acbe0914e7219608c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolableObject
+--- !u!114 &4739620792165318528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188862402292411772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0945d2661e584dc3ae3d350e818de73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthControl
+  hudPosition: {fileID: 0}
+  currentHp: 0
+  maxHp: 0
 --- !u!1 &2479817939842637012
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Tank_0
   m_EditorClassIdentifier: Assembly-CSharp::TurretConfig
   id: 0
-  costBaseTurret: 0
+  costBaseTurret: 5
   levelMax: 3
   turretLevels:
   - level: 1
     damage: 20
-    cost: 5
+    cost: 7
     range: 3
     fireRate: 1
     bulletPrefab: {fileID: 6590333040596217728, guid: 2a89edc80c65ca34397ec3cdfae2f1cf, type: 3}

@@ -38,15 +38,15 @@ public class LevelManager : SingletonMono<LevelManager>
         GameEventManager.onUpdatedEnemiesDie -= UpdateEnemiesDead;
     }
 
-    public void InitializeEcomomyToPlayer()
+    public void InitializeEcomomyToPlayer(LevelConfig config)
     {
-        EconomyManager.Instance.Init();
+        EconomyManager.Instance.Init(config);
         
     }   
     public void Init(WaveEnemyConfig waveEnemyConfig)
     {
         totalEnemies = waveEnemyConfig.GetTotalEnemies();
-        InitializeEcomomyToPlayer();
+
     }
     public void UpdateEnemiesDead()
     {
@@ -64,7 +64,7 @@ public class LevelManager : SingletonMono<LevelManager>
     
     
 
-    public void CheckCompleteLevel(Action onComplete = null)
+    public void CompleteLevel(Action onComplete = null)
     {
         
     }

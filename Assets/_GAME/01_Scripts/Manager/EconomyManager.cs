@@ -1,5 +1,6 @@
 ﻿
 using System;
+using _01_Scripts.Data.Level;
 
 public class EconomyManager : SingletonMono<EconomyManager>
 {
@@ -7,19 +8,17 @@ public class EconomyManager : SingletonMono<EconomyManager>
     public int CurrentEconomy => currentEconomy;
     private bool isFirstTime = true;
 
-    public void Init()
+    public void Init(LevelConfig levelConfig)
     {
         if (isFirstTime) currentEconomy = 0;
-        else
-        {
-            // currentEconomy = ...
-        }
+        AddMoney(levelConfig.CostBase);
     }
 
     public void OnEnable()
     {
         GameEventManager.onAddMoneyUpdated += AddMoney;
         GameEventManager.onUseMoneyUpdated += UseMoney;
+        
     }
 
     public void OnDisable()

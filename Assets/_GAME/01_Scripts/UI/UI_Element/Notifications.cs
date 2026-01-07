@@ -13,6 +13,7 @@ public class Notifications : MonoBehaviour
         GameEventManager.onLevelMaxUpdated += AnnounceLevelMax;
         GameEventManager.onShowUnableToBuy += ShowUnableToBuy;
         GameEventManager.onShowUnableToUpgrade += ShowUnableToUpgrade;
+        GameEventManager.onNotifyCurrentWave += ShowNoticeWave;
 
     }
 
@@ -21,7 +22,7 @@ public class Notifications : MonoBehaviour
         GameEventManager.onLevelMaxUpdated -= AnnounceLevelMax;
         GameEventManager.onShowUnableToBuy -= ShowUnableToBuy;
         GameEventManager.onShowUnableToUpgrade -= ShowUnableToUpgrade;
-        
+        GameEventManager.onNotifyCurrentWave -= ShowNoticeWave;
     }
 
     private void AnnounceLevelMax(string notice)
@@ -33,6 +34,11 @@ public class Notifications : MonoBehaviour
         NotificateInformation(notice);
     }
     private void ShowUnableToUpgrade(string notice)
+    {
+        NotificateInformation(notice);
+    }
+
+    private void ShowNoticeWave(string notice)
     {
         NotificateInformation(notice);
     }

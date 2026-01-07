@@ -1,15 +1,16 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TurretCard : MonoBehaviour
 {
-    [SerializeField] public string nameTurret;
     [SerializeField] public Image spriteRenderer;
     [SerializeField] public TurretConfig turretConfig;
-    [SerializeField] public int cost;
+    [SerializeField] public TextMeshProUGUI cost;
     [SerializeField] public Button btnListener;
     private CanvasGroup canvasGroup;
+    
     private void Awake()
     {
         btnListener.onClick.AddListener(OnClick);
@@ -26,22 +27,21 @@ public class TurretCard : MonoBehaviour
 
     public void SetUp(TurretConfig config)
     {
-        nameTurret = config.nameTurret;
         spriteRenderer.sprite = config.spriteRenderer;
-        cost = config.costBaseTurret;
+        cost.text = config.costBaseTurret.ToString();
         turretConfig = config;
     }
 
     public void OnClick()
     {
-        if (EconomyManager.Instance.CurrentEconomy >= cost)
+        if (EconomyManager.Instance.CurrentEconomy >= int.Parse(cost.text))
         {
             var turretGo = Instantiate(turretConfig.turretPrefab, TurretCardPanel.Instance.StartPos.BuildPosition, Quaternion.identity);
             var turret = turretGo.GetComponent<TurretBase>();
             turret.Init(turretConfig);
             TurretCardPanel.Instance.Hide();
             GameEventManager.BuildTurretCompleted(TurretCardPanel.Instance.StartPos);
-            GameEventManager.UseMoneyUpdated(cost);
+            GameEventManager.UseMoneyUpdated(int.Parse(cost.text));
             TutorialManager.Instance.ReportAction(TutorialActionType.BuildTower);
         }
         else

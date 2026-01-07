@@ -11,7 +11,7 @@ public class EnemySpawner : SingletonMono<EnemySpawner>
     private LevelConfig currentLevelConfig;
     private int currentWaveIndex;
     private int maxWaveIndex;
-    
+    private bool isSpawning = false;
     public int MaxWaveIndex => maxWaveIndex;
 
     public void Init(LevelConfig levelConfig)
@@ -20,6 +20,7 @@ public class EnemySpawner : SingletonMono<EnemySpawner>
         currentWaveIndex = 0;
         maxWaveIndex = levelConfig.TotalWave;
         currentWayPoint = LevelManager.Instance.WayPoint;
+        LevelManager.Instance.InitializeEcomomyToPlayer(levelConfig);
     }
 
     
@@ -36,12 +37,18 @@ public class EnemySpawner : SingletonMono<EnemySpawner>
 
     IEnumerator SpawnWaveEnemy(WaveEnemyConfig waveEnemyConfig)
     {
+        string curWave = currentWaveIndex < maxWaveIndex ? "Wave " + (currentWaveIndex + 1).ToString() : "Last Wave";
+        GameEventManager.NotifyCurrentWave(curWave);
         LevelManager.Instance.Init(waveEnemyConfig);
+        isSpawning = true;
         foreach (var groupEnemy in waveEnemyConfig.GroupEnemies)
         {
             StartCoroutine(SpawnGroupEnemy(groupEnemy));
             yield return new WaitForSeconds(waveEnemyConfig.TimeBetweenWaves);
         }
+        isSpawning = false;
+        yield return new WaitUntil(() => !isSpawning && EnemyManager.Instance.EnemyCountInWave() == 0);
+        CompletedWave();
     }
 
     IEnumerator SpawnGroupEnemy(GroupEnemy enemy)
@@ -55,11 +62,6 @@ public class EnemySpawner : SingletonMono<EnemySpawner>
             yield return new WaitForSeconds(enemy.TimeDelay);
         }
 
-        yield return new WaitUntil((() =>
-        {
-            return EnemyManager.Instance.EnemyCountInWave() == 0;
-        }));
-        CompletedWave();
     }
 
     

@@ -14,10 +14,8 @@ public static class GameEventManager
     public static event Action<string> onShowUnableToBuy; 
     public static event Action<string> onShowUnableToUpgrade; 
     
-    public static event Action<TurretBase> onUpgradeTurret;
-    public static event Action<TurretBase> onSellTurret;
     public static event Action onUpdatedEnemiesDie;
-    
+    public static event Action<string> onNotifyCurrentWave;    
     public static void BuildTurretCompleted(NodeBase obj)
     {
         onBuildTurretCompleted?.Invoke(obj);
@@ -38,16 +36,6 @@ public static class GameEventManager
         onShowUnableToBuy?.Invoke(msg);
     }
 
-    public static void UpgradeTurret(TurretBase obj)
-    {
-        onUpgradeTurret?.Invoke(obj);
-    }
-
-    public static void SellTurret(TurretBase obj)
-    {
-        onSellTurret?.Invoke(obj);
-    }
-
     public static void UpdatedEnemiesDie()
     {
         onUpdatedEnemiesDie?.Invoke();
@@ -61,5 +49,10 @@ public static class GameEventManager
     public static void LevelMaxUpdated(string obj)
     {
         onLevelMaxUpdated?.Invoke(obj);
+    }
+
+    public static void NotifyCurrentWave(string obj)
+    {
+        onNotifyCurrentWave?.Invoke(obj);
     }
 }

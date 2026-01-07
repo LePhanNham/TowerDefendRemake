@@ -27,7 +27,10 @@ public class CanvasGamePlay : UICanvas
         });
         // waveButton.gameObject.SetActive(true);
     }
-
+    private void Start()
+    {
+        goldtText.text = EconomyManager.Instance.CurrentEconomy.ToString();
+    }
     public void OnEnable()
     {
         onWaveCompleted.Subscribe(SetUpBtn);

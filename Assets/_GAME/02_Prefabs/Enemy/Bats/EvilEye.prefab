@@ -15,6 +15,10 @@ GameObject:
   - component: {fileID: 184996600033088473}
   - component: {fileID: 5251964761950747804}
   - component: {fileID: 8322736475322922824}
+  - component: {fileID: 8049762234033012813}
+  - component: {fileID: 3897035952512689459}
+  - component: {fileID: 8186425057563313825}
+  - component: {fileID: 9082659033503055051}
   m_Layer: 6
   m_Name: EvilEye
   m_TagString: Enemy
@@ -37,6 +41,7 @@ Transform:
   m_Children:
   - {fileID: 6760651836662521987}
   - {fileID: 218298899998943157}
+  - {fileID: 7648136527449883678}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &892942848348872187
@@ -167,6 +172,61 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 3}
   m_Size: {x: 5, y: 4}
   m_Direction: 1
+--- !u!114 &8049762234033012813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612647815862814072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35851e207c33496f9e9fe48d157bc8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_01_Scripts.Control.Enemy.Bats.BatEnemyControl
+  currentWayPoint: {fileID: 0}
+  enemyConfig: {fileID: 11400000, guid: e242cbc3899e89a4e9c2cec9e68719b4, type: 2}
+  currentWayPointIndex: 0
+--- !u!114 &3897035952512689459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612647815862814072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045457e641e64f10ad72895da4499ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_01_Scripts.Control.Enemy.EnemyDataBinding
+  _animator: {fileID: 0}
+--- !u!114 &8186425057563313825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612647815862814072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b16839256344acbe0914e7219608c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolableObject
+--- !u!114 &9082659033503055051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612647815862814072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0945d2661e584dc3ae3d350e818de73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthControl
+  hudPosition: {fileID: 0}
+  currentHp: 0
+  maxHp: 0
 --- !u!1 &1512925392606478075
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,3 +899,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7948631025449476476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7648136527449883678}
+  m_Layer: 6
+  m_Name: Hub
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7648136527449883678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948631025449476476}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2250720701006198334}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
