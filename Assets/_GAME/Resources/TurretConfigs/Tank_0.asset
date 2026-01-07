@@ -17,26 +17,26 @@ MonoBehaviour:
   levelMax: 3
   turretLevels:
   - level: 1
-    damage: 20
+    damage: 1
     cost: 7
     range: 3
-    fireRate: 1
+    fireRate: 0.1
     bulletPrefab: {fileID: 6590333040596217728, guid: 2a89edc80c65ca34397ec3cdfae2f1cf, type: 3}
     bulletPoolName: BallistaBullet
     bulletSpeed: 10
   - level: 2
-    damage: 30
+    damage: 2
     cost: 10
     range: 5
-    fireRate: 0.8
+    fireRate: 0.1
     bulletPrefab: {fileID: 6590333040596217728, guid: 2a89edc80c65ca34397ec3cdfae2f1cf, type: 3}
     bulletPoolName: BallistaBullet
     bulletSpeed: 11
   - level: 3
-    damage: 40
+    damage: 3
     cost: 20
     range: 6
-    fireRate: 0.6
+    fireRate: 0.05
     bulletPrefab: {fileID: 6590333040596217728, guid: 2a89edc80c65ca34397ec3cdfae2f1cf, type: 3}
     bulletPoolName: BallistaBullet
     bulletSpeed: 12
