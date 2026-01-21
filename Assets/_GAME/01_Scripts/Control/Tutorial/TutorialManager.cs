@@ -129,7 +129,6 @@ public class TutorialManager : SingletonMono<TutorialManager>
         if (isTutorialFinished) return;
         if (currentStep.requiredAction == action)
         {
-            Debug.Log("Hoàn thành bước: " + currentStep.stepID);
             NextStep();
         }
     }
@@ -139,6 +138,5 @@ public class TutorialManager : SingletonMono<TutorialManager>
         tutorialPanel.SetActive(false);
         handPointer.SetActive(false);
         PlayerPrefs.SetInt("TutorialCompleted", 1);
-        Debug.Log("TUTORIAL FINISHED!");
     }
 }

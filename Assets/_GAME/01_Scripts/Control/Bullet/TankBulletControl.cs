@@ -86,9 +86,7 @@ public class TankBulletControl : PoolableObject
     {
         if (isHit) return;
         isHit = true; 
-        Debug.Log($"Bullet hit {enemy.name} for {damage} damage");
-
-        if (enemy.HPControl != null)
+        if (enemy!=null && !enemy.IsDead && enemy.HPControl != null)
         {
             enemy.HPControl.TakeDamage(damage);
         }

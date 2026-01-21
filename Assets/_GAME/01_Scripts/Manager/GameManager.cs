@@ -20,6 +20,13 @@ public class GameManager : SingletonMono<GameManager>
             Screen.SetResolution(Mathf.RoundToInt(ratio * maxScreenHeight),maxScreenHeight,true);
         }
     }
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        gameState = GameState.MainMenu;
+        UIManager.Instance.OpenUI<CanvasHome>();
+    }
+
 
     public static void ChangeState(GameState state)
     {

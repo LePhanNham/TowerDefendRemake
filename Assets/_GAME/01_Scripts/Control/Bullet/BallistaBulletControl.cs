@@ -98,11 +98,13 @@ public class BallistaBulletControl : PoolableObject
 
     private void HitTarget(EnemyBase enemy)
     {
-        enemy.HPControl.TakeDamage(damage);
         if (isHit) return; // Double check
         isHit = true;
         col.enabled = false;
-
+        if (enemy!=null && !enemy.IsDead && enemy.HPControl != null) 
+        {
+            enemy.HPControl.TakeDamage(damage);
+        }
         DespawnImmediate();
     }
 

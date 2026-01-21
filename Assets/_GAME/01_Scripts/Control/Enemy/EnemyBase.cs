@@ -85,8 +85,8 @@ public abstract class EnemyBase : FSMSystem
         EnemyManager.Instance.Unregister(this);
         OnDie();
         GameEventManager.UpdatedEnemiesDie();
-        PoolManager.Instance.ReleaseToPool(enemyConfig.EnemyName, PoolableObject);
         PoolManager.Instance.Despawn(enemyConfig.EnemyName, PoolableObject);
+        PoolManager.Instance.ReleaseToPool(enemyConfig.EnemyName, PoolableObject);
     }
 
 
@@ -94,8 +94,8 @@ public abstract class EnemyBase : FSMSystem
     {
         isAlive = false;
         EnemyManager.Instance.Unregister(this);
-        PoolManager.Instance.ReleaseToPool(enemyConfig.EnemyName, PoolableObject);
         PoolManager.Instance.Despawn(enemyConfig.EnemyName, PoolableObject);
+        PoolManager.Instance.ReleaseToPool(enemyConfig.EnemyName, PoolableObject);
     }
 }
 

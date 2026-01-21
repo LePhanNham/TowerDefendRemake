@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff50441ea1349498afe14c8720bc63f, type: 3}
+  m_Name: Fire
+  m_EditorClassIdentifier: Assembly-CSharp::SkillConfig
+  skillName: 
+  icon: {fileID: 7232727797619221383, guid: 8ab626048391ead47b545aa750213a01, type: 3}
+  description: 
+  poolName: 
+  cooldown: 0
+  powerValue: 0
+  radius: 0
+  speed: 0
