@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a493d55cbe46dd8fa70fb5e626df87, type: 3}
   m_Name: Tank_0 1
   m_EditorClassIdentifier: Assembly-CSharp::TurretConfig
-  id: 0
+  id: 1
   costBaseTurret: 12
   levelMax: 3
   turretLevels:

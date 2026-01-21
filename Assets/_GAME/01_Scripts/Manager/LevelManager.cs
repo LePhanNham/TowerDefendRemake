@@ -16,6 +16,7 @@ public class LevelManager : SingletonMono<LevelManager>
     private int currentDeadEnemies;
 
     public WayPoint WayPoint => wayPoint;
+    public LevelConfig LevelConfig => levelConfig;
 
     // Allow runtime assignment when loading a map prefab that contains the WayPoint
     public void SetWayPoint(WayPoint wp)
@@ -34,7 +35,19 @@ public class LevelManager : SingletonMono<LevelManager>
     }
     public void StartLevel()
     {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.OpenUI<CanvasGamePlay>();
+        }
+
+        GameManager.ChangeState(GameState.GamePlay);
+        wayPoint = levelConfig.WayPoint;
         EnemySpawner.Instance.Init(levelConfig);
+
+        if (TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.BeginTutorial();
+        }
     }
     private void OnEnable()
     {

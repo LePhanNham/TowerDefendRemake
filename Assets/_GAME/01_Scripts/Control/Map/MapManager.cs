@@ -3,9 +3,7 @@ using UnityEngine;
 public class MapManager : SingletonMono<MapManager>
 {
     [SerializeField] private MapLoader mapLoader;
-    [SerializeField] private MapData defaultMap;
 
-    public MapData DefaultMap => defaultMap;
 
     protected override void Awake()
     {
@@ -16,7 +14,7 @@ public class MapManager : SingletonMono<MapManager>
 
     public void LoadMap(MapData data)
     {
-        var toLoad = data != null ? data : defaultMap;
+        var toLoad = data;
         if (toLoad == null)
         {
             Debug.LogWarning("MapManager: no MapData available to load.");
@@ -38,8 +36,4 @@ public class MapManager : SingletonMono<MapManager>
             mapLoader.UnloadMap();
     }
 
-    public void SetDefaultMap(MapData map)
-    {
-        defaultMap = map;
-    }
 }

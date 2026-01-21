@@ -61,6 +61,8 @@ public class UIManager : SingletonMono<UIManager>
         {
             T prefab = GetUIPrefab<T>();
             T canvas =  Instantiate(prefab, parent);
+            // Ensure instantiated UI is inactive until explicitly opened
+            canvas.gameObject.SetActive(false);
             canvasActives[typeof(T)] = canvas;
         }
         return canvasActives[typeof(T)] as T;

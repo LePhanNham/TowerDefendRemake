@@ -23,9 +23,25 @@ public class TutorialManager : SingletonMono<TutorialManager>
     public bool IsTutorialFinished => isTutorialFinished;
     private void Start()
     {
+        // Do not auto-start tutorial on scene load. Tutorial will be started
+        // explicitly when the game/level starts via `BeginTutorial()`.
+        tutorialPanel.SetActive(false);
+        handPointer.SetActive(false);
+        if (PlayerPrefs.GetInt("TutorialCompleted", 0) != 0)
+        {
+            isTutorialFinished = true;
+        }
+    }
+
+    // Start tutorial when the game/level actually begins
+    public void BeginTutorial()
+    {
+        if (isTutorialFinished) return;
+
         if (PlayerPrefs.GetInt("TutorialCompleted", 0) == 0)
         {
-            Invoke(nameof(NextStep), 0.5f); // Đợi 0.5s load game rồi bắt đầu
+            // small delay to allow UI/map to settle
+            Invoke(nameof(NextStep), 0.25f);
         }
         else
         {

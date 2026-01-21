@@ -37,7 +37,7 @@ public class CanvasHome : UICanvas
         // Delegate map loading to MapManager (map logic not owned by UI)
         if (MapManager.Instance != null)
         {
-            MapManager.Instance.LoadMap(defaultMap);
+            MapManager.Instance.LoadMap(LevelManager.Instance.LevelConfig.MapData);
         }
 
         Close(0f);

@@ -26,15 +26,7 @@ public class MapLoader : MonoBehaviour
 
         Transform parent = mapRoot != null ? mapRoot : this.transform;
         currentMapInstance = Instantiate(data.mapPrefab, parent);
-
-        // Find WayPoint in the instantiated map and register it to LevelManager
-        var wp = currentMapInstance.GetComponentInChildren<WayPoint>();
-        if (wp != null && LevelManager.Instance != null)
-        {
-            LevelManager.Instance.SetWayPoint(wp);
-        }
-
-        // Additional registrations (markers, spawn points) can be added here
+        currentMapInstance.transform.position = Vector3.zero;
     }
 
     public void UnloadMap()

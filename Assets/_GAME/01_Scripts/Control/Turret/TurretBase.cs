@@ -7,6 +7,7 @@ public class TurretBase : MonoBehaviour
 {
     // panelInformation removed: use shared TurretInformation.Instance instead
     protected TurretConfig TurretConfig;
+    public NodeBase HostNode;
     protected EnemyBase CurrentTarget;
     protected int CurrentLevel;
     protected TurretLevel CurrentTurretLevel;
@@ -94,9 +95,27 @@ public class TurretBase : MonoBehaviour
     }
     public void SellTurretBase(string notice = null, Action callback = null)
     {
-        var cost = CurrentTurretLevel.cost * 2/3;
-        EconomyManager.Instance.AddMoney(cost);
+        var cost = (int)(CurrentTurretLevel.cost * 2f / 3f);
+        GameEventManager.AddMoneyUpdated(cost);
         TutorialManager.Instance.ReportAction(TutorialActionType.SellTurret);
+
+
+        if (HostNode != null)
+        {
+            GameEventManager.TurretSold(HostNode);
+        }
+        else
+        {
+            Debug.LogWarning("SellTurretBase: HostNode is null, cannot re-enable node automatically.");
+        }
+
+        HostNode = null;
+
+        if (TurretInformation.Instance != null)
+            TurretInformation.Instance.FadeOutClose();
+        if (TurretCardPanel.Instance != null)
+            TurretCardPanel.Instance.Hide();
+
         callback?.Invoke();
         Destroy(gameObject);
     }

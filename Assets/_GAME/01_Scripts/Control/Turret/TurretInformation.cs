@@ -26,6 +26,26 @@ public class TurretInformation : SingletonMono<TurretInformation>
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
+    private void OnEnable()
+    {
+        GameEventManager.onTurretSold += HandleTurretSold;
+    }
+
+    private void OnDisable()
+    {
+        GameEventManager.onTurretSold -= HandleTurretSold;
+    }
+
+    private void HandleTurretSold(NodeBase node)
+    {
+        // if the currently shown turret was on this node, close the panel
+        Debug.Log($"TurretInformation.HandleTurretSold: node={node?.name}, currentTurretHost={(turretbase!=null? turretbase.HostNode?.name : "null")}");
+        if (turretbase != null && turretbase.HostNode == node)
+        {
+            FadeOutClose();
+        }
+    }
+
     public void Show(TurretBase target)
     {
         turretbase = target;
@@ -63,6 +83,14 @@ public class TurretInformation : SingletonMono<TurretInformation>
         canvasGroup.interactable = true;
         canvasGroup.DOFade(1, 0.5f);
     }
+
+    // Expose whether the information panel is currently open and blocking input.
+    // Also check alpha/interactable to avoid treating a hidden-but-active canvas as open.
+    public bool IsOpen => canvasGroup != null
+                            && canvasGroup.gameObject.activeInHierarchy
+                            && canvasGroup.blocksRaycasts
+                            && canvasGroup.interactable
+                            && canvasGroup.alpha > 0.05f;
 
     public void FadeOutClose()
     {

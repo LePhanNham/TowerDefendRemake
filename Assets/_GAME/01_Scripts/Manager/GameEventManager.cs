@@ -5,6 +5,7 @@ using UnityEngine;
 public static class GameEventManager
 {
     public static event Action<NodeBase> onBuildTurretCompleted;
+    public static event Action<NodeBase> onTurretSold;
 
     public static event Action<string> onLevelMaxUpdated;
     
@@ -19,6 +20,12 @@ public static class GameEventManager
     public static void BuildTurretCompleted(NodeBase obj)
     {
         onBuildTurretCompleted?.Invoke(obj);
+    }
+
+    public static void TurretSold(NodeBase obj)
+    {
+        Debug.Log($"GameEventManager: TurretSold invoked for node={obj?.name}");
+        onTurretSold?.Invoke(obj);
     }
 
     public static void AddMoneyUpdated(int money)

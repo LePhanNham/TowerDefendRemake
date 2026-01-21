@@ -10,6 +10,10 @@ namespace _01_Scripts.Data.Level
     {
         [SerializeField] private int levelID;
         [SerializeField] private List<WaveEnemyConfig> enemyWave;
+        [SerializeField] private WayPoint wayPoint;
+        [SerializeField] private MapData mapData;
+        public MapData MapData => mapData;
+        public WayPoint WayPoint => wayPoint;
         public int LevelID { get => levelID; }
 
         public List<WaveEnemyConfig> EnemyWave

@@ -63,4 +63,6 @@ MonoBehaviour:
       enemyConfig: {fileID: 11400000, guid: a9e6d7630f69a5f4385c65ccf9facb7b, type: 2}
       timeDelays: 3
     timeBetweenWaves: 10
+  wayPoint: {fileID: 4101488052027106834, guid: ab50410ef3dad2943aa85b1a0b2202ba, type: 3}
+  mapData: {fileID: 11400000, guid: 66e27ea13024afe43a8a00295ffe5c26, type: 2}
   CostBase: 100
