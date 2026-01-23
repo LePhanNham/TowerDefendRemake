@@ -66,5 +66,6 @@ namespace CONSTANT
     public static class EffectName
     {
         public static readonly string TankExplosion = "TankExplosionEffect";
+        public static readonly string FireEffect = "Fire";
     }
 }

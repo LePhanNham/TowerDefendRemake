@@ -11,3 +11,12 @@ public class SkillSpawnData : IPoolableData
         this.config = cfg;
     }
 }
+
+
+public enum SkillType
+{
+    Attack,
+    Defense,
+    Support,
+    Buffer
+}

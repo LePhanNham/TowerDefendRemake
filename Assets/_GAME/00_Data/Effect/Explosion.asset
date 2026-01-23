@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aff50441ea1349498afe14c8720bc63f, type: 3}
-  m_Name: Fire
+  m_Name: Explosion
   m_EditorClassIdentifier: Assembly-CSharp::SkillConfig
-  skillName: Fire
-  icon: {fileID: 21300000, guid: 37b235823006c499d915c13924b61e2e, type: 3}
+  skillName: ExploseDestroy
+  icon: {fileID: 21300000, guid: 19927fa1c46ec465e96a55e955d65636, type: 3}
   description: 
-  poolName: Fire
-  cooldown: 20
-  powerValue: 200
-  radius: 5
+  poolName: Explosion
+  cooldown: 50
+  powerValue: 500
+  radius: 10
   speed: 5

@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-using UnityEngine;
-
 public class TankBulletData : IPoolableData
 {
     public string bulletPoolName { get; private set; } // <--- Thêm cái này
