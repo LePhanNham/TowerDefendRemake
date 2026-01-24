@@ -1,7 +1,5 @@
 # TowerDefend
 
-Professional, concise README for the TowerDefend Unity project.
-
 ## Overview
 
 TowerDefend is a 2D tower-defense prototype built with Unity. Players place turrets on nodes to stop enemy waves that follow waypoints. The project uses a modular architecture with managers, object pooling, ScriptableObject configs, and a small event system to drive UI and gameplay.
