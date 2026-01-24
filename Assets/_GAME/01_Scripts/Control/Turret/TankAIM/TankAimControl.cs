@@ -19,12 +19,11 @@ public class TankAimControl : TurretBase
         RotateTurret();
 
         FireCooldown -= Time.deltaTime;
-        
-        if (FireCooldown <= 0 && IsAimed())
-        {
-            Attack();
-            FireCooldown = CurrentTurretLevel.fireRate;
-        }
+
+        if (FireCooldown > 0) return;
+
+        Attack();
+        FireCooldown = CurrentTurretLevel.fireRate;
     }
 
     private void RotateTurret()
@@ -84,16 +83,15 @@ public class TankAimControl : TurretBase
             return;
         }
 
-        // spawn a linear bullet (fly straight) using TankLinearBulletData
-        var linearData = new TankLinearBulletData(
-            poolName,
-            firePoint.position,
-            firePoint.up,
+        var data = new TankBulletData(
+            level.bulletPoolName,
+            firePoint,
+            CurrentTarget,
             CurrentTurretLevel.bulletSpeed,
             CurrentTurretLevel.damage
         );
 
-        Debug.Log($"Spawning linear bullet pool={poolName} pos={linearData.startPosition} dir={linearData.direction} speed={linearData.speed}", this);
-        PoolManager.Instance.Spawn(poolName, linearData);
+        PoolManager.Instance.Spawn(level.bulletPoolName, data);
+            if (SoundManager.Instance != null) SoundManager.Instance.Play(SoundManager.SoundId.Fire);
     }
 }

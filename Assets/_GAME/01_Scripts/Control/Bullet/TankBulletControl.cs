@@ -92,8 +92,8 @@ public class TankBulletControl : PoolableObject
         {
             Debug.LogError("Enemy không có HPControl!");
         }
-
         SpawnExplosion();
+        if (SoundManager.Instance != null) SoundManager.Instance.Play(SoundManager.SoundId.Explosion);
         DespawnImmediate();
     }
 

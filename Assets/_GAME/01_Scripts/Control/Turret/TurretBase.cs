@@ -61,9 +61,9 @@ public class TurretBase : MonoBehaviour
     {
         if (CurrentLevel < TurretConfig.levelMax-1)
         {
-            if (EconomyManager.Instance.CurrentEconomy >= TurretConfig.turretLevels[CurrentLevel + 1].cost)
+            if (EconomyManager.Instance.CurrentEconomy >= TurretConfig.turretLevels[CurrentLevel].cost)
             {
-                GameEventManager.UseMoneyUpdated(TurretConfig.turretLevels[CurrentLevel + 1].cost);
+                GameEventManager.UseMoneyUpdated(TurretConfig.turretLevels[CurrentLevel].cost);
                 CurrentLevel++;
                 SetCurrentLevel(CurrentLevel);
                 callback?.Invoke();
@@ -97,6 +97,7 @@ public class TurretBase : MonoBehaviour
     {
         var cost = (int)(CurrentTurretLevel.cost * 2f / 3f);
         GameEventManager.AddMoneyUpdated(cost);
+        if (SoundManager.Instance != null) SoundManager.Instance.Play(SoundManager.SoundId.Sell);
         TutorialManager.Instance.ReportAction(TutorialActionType.SellTurret);
 
 

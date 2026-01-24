@@ -106,6 +106,7 @@ public class BallistaBulletControl : PoolableObject
             enemy.HPControl.TakeDamage(damage);
         }
         DespawnImmediate();
+        if (SoundManager.Instance != null) SoundManager.Instance.Play(SoundManager.SoundId.Hit);
     }
 
     private void DespawnImmediate()

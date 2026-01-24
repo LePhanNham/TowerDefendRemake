@@ -854,6 +854,7 @@ GameObject:
   - component: {fileID: 2178401910537600409}
   - component: {fileID: 8240259217805665286}
   - component: {fileID: 1026072135835883966}
+  - component: {fileID: 4655680630591212180}
   m_Layer: 0
   m_Name: TurretCard 1
   m_TagString: Untagged
@@ -1008,7 +1009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e33df7a33f64d79bea2647a407c057c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretCard
-  nameTurret: {fileID: 0}
   spriteRenderer: {fileID: 6747184820721488216}
   turretConfig: {fileID: 0}
   cost: {fileID: 4362984943685780137}
@@ -1025,6 +1025,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4655680630591212180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5845990841401523213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed04d06b06859f4a9f5c74dcf2f619a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  sound: 9
+  volume: 1
 --- !u!1 &6320175425883718497
 GameObject:
   m_ObjectHideFlags: 0

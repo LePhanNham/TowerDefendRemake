@@ -45,6 +45,7 @@ public class TankFireControl : TurretBase
         );
 
         PoolManager.Instance.Spawn(CONSTANT.BulletName.BallistaBullet, data);
+        if (SoundManager.Instance != null) SoundManager.Instance.Play(SoundManager.SoundId.Fire);
     }
 
 }

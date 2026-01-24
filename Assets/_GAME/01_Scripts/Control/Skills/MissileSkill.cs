@@ -12,6 +12,7 @@ public class MissileSkill : SkillBaseControl
         startPos = targetPos + new Vector3(0, spawnOffsetY, 0);
         transform.position = startPos;
         gameObject.SetActive(true);
+        if (SoundManager.Instance != null) SoundManager.Instance.Play(SoundManager.SoundId.SkillCast);
     }
 
     private void Update()
@@ -41,6 +42,7 @@ public class MissileSkill : SkillBaseControl
         int power = (config != null) ? config.powerValue : 0;
         ApplyAreaEffect(transform.position, radius, power);
         PoolManager.Instance.Spawn(CONSTANT.EffectName.FireEffect, new EffectData(transform.position));
+        if (SoundManager.Instance != null) SoundManager.Instance.Play(SoundManager.SoundId.SkillImpact);
         StartCoroutine(DelayedDespawn());
     }
 

@@ -16,6 +16,10 @@ namespace _01_Scripts.Data.Level
         public WayPoint WayPoint => wayPoint;
         public int LevelID { get => levelID; }
 
+        [Header("Base")]
+        public int BaseHp => baseHp;
+        [SerializeField] private int baseHp = 10;
+
         public List<WaveEnemyConfig> EnemyWave
         {
             get => enemyWave;

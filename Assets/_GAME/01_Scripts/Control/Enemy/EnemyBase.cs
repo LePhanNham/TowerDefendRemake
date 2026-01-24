@@ -94,6 +94,11 @@ public abstract class EnemyBase : FSMSystem
     {
         isAlive = false;
         EnemyManager.Instance.Unregister(this);
+        // Damage player's base when enemy reaches endpoint
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.DamageBase(1);
+        }
         PoolManager.Instance.Despawn(enemyConfig.EnemyName, PoolableObject);
         PoolManager.Instance.ReleaseToPool(enemyConfig.EnemyName, PoolableObject);
     }

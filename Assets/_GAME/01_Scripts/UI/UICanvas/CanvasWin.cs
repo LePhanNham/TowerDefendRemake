@@ -26,13 +26,19 @@ public class CanvasWin : UICanvas
     private void OnClickRestartGameButton()
     {
         Close(0f);
-        // LevelManager.Instance.StartLevel(0);
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.StartLevel();
+        }
     }
 
     private void OnClickNextButton()
     {
-        UIManager.Instance.CloseAll();
-        UIManager.Instance.OpenUI<CanvasHome>();
+        Close(0f);
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.NextLevel();
+        }
     }
 
     private void OnClickCloseButton()

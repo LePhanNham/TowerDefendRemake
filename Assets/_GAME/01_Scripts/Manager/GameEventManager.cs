@@ -17,6 +17,8 @@ public static class GameEventManager
     
     public static event Action onUpdatedEnemiesDie;
     public static event Action<string> onNotifyCurrentWave;    
+    public static event Action<int> onBaseHpUpdated;
+    public static event Action onBaseHpZero;
     public static void BuildTurretCompleted(NodeBase obj)
     {
         onBuildTurretCompleted?.Invoke(obj);
@@ -24,7 +26,6 @@ public static class GameEventManager
 
     public static void TurretSold(NodeBase obj)
     {
-        Debug.Log($"GameEventManager: TurretSold invoked for node={obj?.name}");
         onTurretSold?.Invoke(obj);
     }
 
@@ -46,6 +47,16 @@ public static class GameEventManager
     public static void UpdatedEnemiesDie()
     {
         onUpdatedEnemiesDie?.Invoke();
+    }
+
+    public static void BaseHpUpdated(int hp)
+    {
+        onBaseHpUpdated?.Invoke(hp);
+    }
+
+    public static void BaseHpZero()
+    {
+        onBaseHpZero?.Invoke();
     }
 
     public static void ShowUnableToUpgrade(string obj)

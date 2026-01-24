@@ -1238,6 +1238,7 @@ MonoBehaviour:
   waveButton: {fileID: 3048920605184827763}
   currentWaveIndex: 0
   goldtText: {fileID: 8627938316354688533}
+  hpSlider: {fileID: 7708052610918458500}
 --- !u!225 &3649961385436288292
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -2150,6 +2150,8 @@ MonoBehaviour:
   homePanelAnimator: {fileID: 878449496575825841}
   startGameButton: {fileID: 5992501154117702941}
   exitButton: {fileID: 1310347254691858607}
+  defaultMap: {fileID: 0}
+  levelNameText: {fileID: 0}
 --- !u!114 &878449496575825841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2302,6 +2304,7 @@ GameObject:
   - component: {fileID: 2289926514485788431}
   - component: {fileID: 3913919351042608147}
   - component: {fileID: 1310347254691858607}
+  - component: {fileID: 5302951953060334971}
   m_Layer: 0
   m_Name: Button_Exit
   m_TagString: Untagged
@@ -2411,6 +2414,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5302951953060334971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133250059945338314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed04d06b06859f4a9f5c74dcf2f619a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  sound: 9
+  volume: 1
 --- !u!1 &7301352535328706250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3521,6 +3538,7 @@ GameObject:
   - component: {fileID: 7679471093604105207}
   - component: {fileID: 1904938236320698185}
   - component: {fileID: 5992501154117702941}
+  - component: {fileID: 542413205670039150}
   m_Layer: 0
   m_Name: Button_Play
   m_TagString: Untagged
@@ -3630,3 +3648,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &542413205670039150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929531568182553178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed04d06b06859f4a9f5c74dcf2f619a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  sound: 9
+  volume: 1
